@@ -3,6 +3,7 @@ const resultDisplay = document.querySelector('#result') // I'm looking for id = 
 const startPauseButton = document.querySelector('#start-pause-button')
 const squares = document.querySelectorAll('.grid div') // vsichki koito sa podchineni na grid (divcheta)  only the divs inside grid 
 let currentIndex = 76
+const logsLeft = document.querySelectorAll('.log-left')
 const width = 9;
 
 function moveFrog(e) { // pass-vame event
@@ -43,3 +44,14 @@ function moveFrog(e) { // pass-vame event
 }
 
 document.addEventListener('keyup', moveFrog)
+
+function autoMoveLogs() {
+    logsLeft.forEach(logLeft => moveLogLeft())
+}
+
+
+function moveLogLeft(logLeft) {
+    switch(true) {
+        case logLeft.classList.contains('l1'):
+    }
+}
