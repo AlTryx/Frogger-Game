@@ -31,7 +31,7 @@ function moveFrog(e) { // pass-vame event
 
                     case 'ArrowDown' : 
 
-                    if(currentIndex+width<=80)
+                    if(currentIndex+width<=width*width)
                         currentIndex += width
                     break;
             }
