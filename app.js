@@ -53,5 +53,7 @@ function autoMoveLogs() {
 function moveLogLeft(logLeft) {
     switch(true) {
         case logLeft.classList.contains('l1'):
+            logLeft.classList.remove('l1')
+            logLeft.classList.add('l2')
     }
 }
