@@ -6,6 +6,9 @@ let currentIndex = 76
 const logsLeft = document.querySelectorAll('.log-left')
 const logsRight = document.querySelectorAll('.log-right')
 const width = 9;
+const carsLeft = document.querySelectorAll('.car-left')
+const carsRight = document.querySelectorAll('.car-right')
+let timerId
 
 function moveFrog(e) { // pass-vame event
     squares[currentIndex].classList.remove('frog')
@@ -46,9 +49,11 @@ function moveFrog(e) { // pass-vame event
 
 document.addEventListener('keyup', moveFrog)
 
-function autoMoveLogs() {
+function autoMoveElements() {
     logsLeft.forEach(logLeft => moveLogLeft(logLeft))
     logsRight.forEach(logRight => moveLogRight(logRight))
+    carsLeft.forEach(carLeft => moveCarLeft(carLeft))
+    carsRight.forEach(carRight => moveCarRight(carRight))
 }
 
 
@@ -105,4 +110,54 @@ function moveLogRight(logRight) {
 }
 
 
-setInterval(autoMoveLogs, 1000)
+
+function moveCarLeft(carLeft) {
+    switch(true) {
+
+    case carLeft.classList.contains('c1'):
+        carLeft.classList.remove('c1')
+        carLeft.classList.add('c2')
+            break;
+    
+    case carLeft.classList.contains('c2'):
+        carLeft.classList.remove('c2')
+        carLeft.classList.add('c3')
+            break;
+    case carLeft.classList.contains('c3'):
+        carLeft.classList.remove('c3')
+        carLeft.classList.add('c1')
+            break;
+  
+}
+}
+
+
+function moveCarRight(carRight) {
+    switch(true) {
+        case carRight.classList.contains('c1'):
+            carRight.classList.remove('c1')
+            carRight.classList.add('c3')
+            break;
+    
+    case carRight.classList.contains('c2'):
+        carRight.classList.remove('c2')
+        carRight.classList.add('c1')
+            break;
+    case carRight.classList.contains('c3'):
+        carRight.classList.remove('c3')
+        carRight.classList.add('c2')
+            break;
+
+}
+}
+
+function lose() { // c1, l1, l2, l3
+    if(squares[currentIndex].classList.contains('c1')) {
+        resultDisplay.textContent = 'You lose!'
+        clearInterval(timerId)
+        squares[currentIndex].classList.remove('frog')
+        document.removeEventListener('keyup', moveFrog)
+    }
+}
+
+timerId = setInterval(autoMoveElements, 1000)
