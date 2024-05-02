@@ -167,6 +167,7 @@ function lose()
     squares[currentIndex].classList.contains('l4') ||
     squares[currentIndex].classList.contains('l5') ||
     currentTime <= 0)
+
     {
         resultDisplay.textContent = 'You lose!'
         clearInterval(timerId)
