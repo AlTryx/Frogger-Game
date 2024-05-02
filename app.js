@@ -4,6 +4,7 @@ const startPauseButton = document.querySelector('#start-pause-button')
 const squares = document.querySelectorAll('.grid div') // vsichki koito sa podchineni na grid (divcheta)  only the divs inside grid 
 let currentIndex = 76
 const logsLeft = document.querySelectorAll('.log-left')
+const logsRight = document.querySelectorAll('.log-right')
 const width = 9;
 
 function moveFrog(e) { // pass-vame event
@@ -47,6 +48,7 @@ document.addEventListener('keyup', moveFrog)
 
 function autoMoveLogs() {
     logsLeft.forEach(logLeft => moveLogLeft(logLeft))
+    logsRight.forEach(logRight => moveLogRight(logRight))
 }
 
 
@@ -75,5 +77,32 @@ function moveLogLeft(logLeft) {
             break;
 }
 }
+
+function moveLogRight(logRight) {
+    switch(true) {
+        case logRight.classList.contains('l1'):
+            logRight.classList.remove('l1')
+            logRight.classList.add('l5')
+            break;
+    
+    case logRight.classList.contains('l2'):
+        logRight.classList.remove('l2')
+        logRight.classList.add('l1')
+            break;
+    case logRight.classList.contains('l3'):
+        logRight.classList.remove('l3')
+        logRight.classList.add('l2')
+            break;
+    case logRight.classList.contains('l4'):
+        logRight.classList.remove('l4')
+        logRight.classList.add('l3')
+                break;
+    case logRight.classList.contains('l5'):
+        logRight.classList.remove('l5')
+        logRight.classList.add('l4')
+            break;
+}
+}
+
 
 setInterval(autoMoveLogs, 1000)
